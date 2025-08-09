@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f9f8f4;
+    margin: 0;
+    color: #333;
+}
+
+/* Top Menu */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    font-size: 14px;
+}
+
+.menu-icon {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.right-menu span {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* Product Container */
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Product Image */
+.product-image img {
+    width: 420px;
+    border-radius: 5px;
+}
+
+/* Product Details */
+.product-details {
+    max-width: 380px;
+}
+
+.product-details h2 {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Price Row with Share Icon */
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tax-note {
+    font-size: 13px;
+    color: gray;
+    margin: 3px 0 20px;
+}
+
+/* Share Button */
+.share-btn {
+    border: none;
+    background: white;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Share Popup */
+.share-popup {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.share-popup .share-option {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    margin: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.share-popup .share-option i {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Sizes */
+.sizes {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.sizes button {
+    flex: 1;
+    background: #222;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sizes button:not(:last-child) {
+    border-right: 1px solid #444;
+}
+
+/* Add Button */
+.add-btn {
+    width: 100%;
+    background: #222;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Info Links */
+.info-links {
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.info-item i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<!-- Top Menu -->
+<header class="top-nav">
+    <div class="menu-icon">&#9776;</div>
+    <div class="right-menu">
+        <span>search</span>
+        <span>login</span>
+        <span>add to collection</span>
+    </div>
+</header>
+
+<main class="product-container">
+    <!-- Product Image -->
+    <div class="product-image">
+        <img id="productImage" src="Screenshot 2025-08-09 164650.png" alt="Summer outfits for men">
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-details">
+        <h2 id="productTitle">Summer outfits for men | Summer wear</h2>
+
+        <!-- Price & Share -->
+        <div class="price-row">
+            <div>
+                <p id="productPrice" class="price">₹ 2370.00</p>
+                <p class="tax-note">( inc of all taxes )</p>
+            </div>
+            <button class="share-btn" id="shareBtn"><i class="bi bi-share"></i></button>
+        </div>
+
+        <!-- Sizes -->
+        <div class="sizes">
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+            <button>XXL</button>
+        </div>
+
+        <!-- Add Button -->
+        <button class="add-btn">ADD</button>
+
+        <!-- Share Popup -->
+        <div class="share-popup" id="sharePopup">
+            <a href="#" id="whatsappShare" class="share-option" style="color:green;">
+                <i class="bi bi-whatsapp"></i> Whatsapp
+            </a>
+            <a href="#" id="facebookShare" class="share-option" style="color:#1877f2;">
+                <i class="bi bi-facebook"></i> Facebook
+            </a>
+            <a href="#" id="telegramShare" class="share-option" style="color:#0088cc;">
+                <i class="bi bi-telegram"></i> Telegram
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="share-option" style="color:#e1306c;">
+                <i class="bi bi-instagram"></i> Instagram
+            </a>
+            <a href="#" id="twitterShare" class="share-option" style="color:black;">
+                <i class="bi bi-twitter-x"></i> X
+            </a>
+            <a href="#" id="copyLink" class="share-option" style="color:black;">
+                <i class="bi bi-link-45deg"></i> Copy link
+            </a>
+        </div>
+
+        <!-- Info Links -->
+        <div class="info-links">
+            <div class="info-item"><i class="bi bi-tag"></i> product details</div>
+            <div class="info-item"><i class="bi bi-truck"></i> delivery & returns</div>
+            <div class="info-item"><i class="bi bi-credit-card"></i> payment option</div>
+        </div>
+    </div>
+</main>
+
+<script>
+// Toggle share popup
+document.getElementById('shareBtn').addEventListener('click', function() {
+    let popup = document.getElementById('sharePopup');
+    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+});
+
+// Product details
+let title = document.getElementById('productTitle').innerText;
+let price = document.getElementById('productPrice').innerText;
+let url = window.location.href;
+
+// Social share links
+document.getElementById('whatsappShare').href = `https://wa.me/?text=${encodeURIComponent(title + " - " + price + " " + url)}`;
+document.getElementById('facebookShare').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(title + " - " + price)}`;
+document.getElementById('telegramShare').href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title + " - " + price)}`;
+document.getElementById('twitterShare').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title + " - " + price)}`;
+
+// Copy link
+document.getElementById('copyLink').addEventListener('click', function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(url).then(() => {
+        alert("Link copied to clipboard!");
+    });
+});
+</script>
+
+</body>
+</html>
