@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Page</title>
+<title>Minimal Product Page</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -14,108 +14,83 @@
 <style>
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #f9f8f4;
+    background: #faf9f6;
     margin: 0;
-    color: #333;
+    color: #222;
 }
 
-/* Top Menu */
+/* Top Navigation */
 .top-nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 40px;
     font-size: 14px;
+    color: #555;
 }
-
 .menu-icon {
-    font-size: 22px;
+    font-size: 26px;
     cursor: pointer;
 }
-
+.right-menu {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
 .right-menu span {
-    margin-left: 20px;
     cursor: pointer;
 }
+.right-menu span:first-child {
+    border-bottom: 1px solid #222;
+    padding-bottom: 2px;
+}
 
-/* Product Container */
+/* Product Layout */
 .product-container {
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    padding: 40px;
-    gap: 50px;
-    flex-wrap: wrap;
+    gap: 60px;
+    height: calc(100vh - 80px);
+    padding: 0 40px;
 }
-
-/* Product Image */
 .product-image img {
-    width: 420px;
-    border-radius: 5px;
+    max-width: 450px;
+    height: auto;
 }
-
-/* Product Details */
 .product-details {
-    max-width: 380px;
+    max-width: 420px;
 }
 
+/* Title */
 .product-details h2 {
-    font-weight: 500;
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
-/* Price Row with Share Icon */
+/* Price & Share */
 .price-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-
 .price {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
 }
-
 .tax-note {
     font-size: 13px;
     color: gray;
-    margin: 3px 0 20px;
+    margin: 5px 0 20px;
 }
-
-/* Share Button */
 .share-btn {
+    background: #f5f5f5;
     border: none;
-    background: white;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+    padding: 8px 10px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 18px;
-}
-
-/* Share Popup */
-.share-popup {
-    display: none;
-    margin-top: 10px;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    background: white;
-}
-
-.share-popup .share-option {
-    display: inline-block;
-    width: 80px;
-    text-align: center;
-    margin: 10px;
-    text-decoration: none;
-    color: #333;
-}
-
-.share-popup .share-option i {
-    font-size: 28px;
-    display: block;
-    margin-bottom: 5px;
 }
 
 /* Sizes */
@@ -123,7 +98,6 @@ body {
     display: flex;
     margin-bottom: 15px;
 }
-
 .sizes button {
     flex: 1;
     background: #222;
@@ -131,11 +105,11 @@ body {
     border: none;
     padding: 12px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 14px;
 }
-
 .sizes button:not(:last-child) {
-    border-right: 1px solid #444;
+    border-right: 2px solid #faf9f6;
 }
 
 /* Add Button */
@@ -145,28 +119,101 @@ body {
     color: white;
     border: none;
     padding: 14px;
-    font-weight: bold;
+    font-weight: 500;
     cursor: pointer;
+    font-size: 14px;
     margin-bottom: 20px;
 }
 
 /* Info Links */
 .info-links {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #ccc;
     font-size: 14px;
 }
-
 .info-item {
     display: flex;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
     cursor: pointer;
+    color: #444;
 }
-
 .info-item i {
     margin-right: 8px;
     font-size: 16px;
+}
+
+
+/* Bottom Share Popup */
+.share-popup {
+    position: fixed;
+    left: 53.5%;
+    bottom: -300px;
+    width: 360px;
+    height: 220px;
+    background: white;
+    border-radius: 15px 15px 0 0;
+    border-top: 1px solid #ddd;
+    padding: 25px 20px;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+    transition: bottom 0.9s ease-in-out;
+    z-index: 999;
+}
+.share-popup.active {
+    
+    width: 360px;
+    height: 220px;
+    align-content: center;
+    bottom: 0;
+}
+
+/* Grid layout for icons */
+.share-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px 15px;
+}
+.share-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black ;
+    font-size: 14px;
+}
+.share-option i {
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+.share-option .app-name {
+    font-size: 14px;
+    color: black;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+    .product-details {
+        max-width: 100%;
+    }
+    .share-popup {
+        
+        left: 0;
+        transform: none;
+        width: 100%;
+        height: auto;
+        border-radius: 15px 15px 0 0;
+        padding: 20px 15px;
+    }
+    .share-popup.active {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+    }
 }
 </style>
 </head>
@@ -185,7 +232,7 @@ body {
 <main class="product-container">
     <!-- Product Image -->
     <div class="product-image">
-        <img id="productImage" src="Screenshot 2025-08-09 164650.png" alt="Summer outfits for men">
+        <img src="Screenshot 2025-08-09 164650.png" alt="Summer outfits for men">
     </div>
 
     <!-- Product Info -->
@@ -212,28 +259,6 @@ body {
         <!-- Add Button -->
         <button class="add-btn">ADD</button>
 
-        <!-- Share Popup -->
-        <div class="share-popup" id="sharePopup">
-            <a href="#" id="whatsappShare" class="share-option" style="color:green;">
-                <i class="bi bi-whatsapp"></i> Whatsapp
-            </a>
-            <a href="#" id="facebookShare" class="share-option" style="color:#1877f2;">
-                <i class="bi bi-facebook"></i> Facebook
-            </a>
-            <a href="#" id="telegramShare" class="share-option" style="color:#0088cc;">
-                <i class="bi bi-telegram"></i> Telegram
-            </a>
-            <a href="https://www.instagram.com/" target="_blank" class="share-option" style="color:#e1306c;">
-                <i class="bi bi-instagram"></i> Instagram
-            </a>
-            <a href="#" id="twitterShare" class="share-option" style="color:black;">
-                <i class="bi bi-twitter-x"></i> X
-            </a>
-            <a href="#" id="copyLink" class="share-option" style="color:black;">
-                <i class="bi bi-link-45deg"></i> Copy link
-            </a>
-        </div>
-
         <!-- Info Links -->
         <div class="info-links">
             <div class="info-item"><i class="bi bi-tag"></i> product details</div>
@@ -243,25 +268,63 @@ body {
     </div>
 </main>
 
+<!-- Dark overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Share Popup -->
+<div class="share-popup" id="sharePopup">
+    <div class="share-grid">
+        <a href="#" id="whatsappShare" class="share-option" style="color:green;">
+            <i class="bi bi-whatsapp"></i> 
+            <span class="app-name">Whatsapp</span>
+        </a>
+        <a href="#" id="facebookShare" class="share-option" style="color:#1877f2;">
+            <i class="bi bi-facebook"></i> 
+            <span class="app-name">Facebook</span>
+        </a>
+        <a href="#" id="telegramShare" class="share-option" style="color:#0088cc;">
+            <i class="bi bi-telegram"></i> 
+            <span class="app-name">Telegram</span>
+        </a>
+        <a href="#" id="copyLink" class="share-option" style="color:black;">
+            <i class="bi bi-link-45deg"></i> 
+            <span class="app-name">Copy link</span>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" class="share-option" style="color:#e1306c;">
+            <i class="bi bi-instagram"></i> 
+            <span class="app-name">Instagram</span>
+        </a>
+        <a href="#" id="twitterShare" class="share-option" style="color:black;">
+            <i class="bi bi-twitter-x"></i> 
+            <span class="app-name">X</span>
+        </a>
+    </div>
+</div>
+
 <script>
-// Toggle share popup
-document.getElementById('shareBtn').addEventListener('click', function() {
-    let popup = document.getElementById('sharePopup');
-    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+const shareBtn = document.getElementById('shareBtn');
+const sharePopup = document.getElementById('sharePopup');
+const overlay = document.getElementById('overlay');
+
+shareBtn.addEventListener('click', function() {
+    sharePopup.classList.toggle('active');
+    overlay.classList.toggle('active');
 });
 
-// Product details
+overlay.addEventListener('click', function() {
+    sharePopup.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
 let title = document.getElementById('productTitle').innerText;
 let price = document.getElementById('productPrice').innerText;
 let url = window.location.href;
 
-// Social share links
 document.getElementById('whatsappShare').href = `https://wa.me/?text=${encodeURIComponent(title + " - " + price + " " + url)}`;
 document.getElementById('facebookShare').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(title + " - " + price)}`;
 document.getElementById('telegramShare').href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title + " - " + price)}`;
 document.getElementById('twitterShare').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title + " - " + price)}`;
 
-// Copy link
 document.getElementById('copyLink').addEventListener('click', function(e) {
     e.preventDefault();
     navigator.clipboard.writeText(url).then(() => {
